@@ -6,6 +6,7 @@
 //  Copyright © 2016 Sam Nub. All rights reserved.
 //
 
+#pragma once
 #ifndef INPUT_H
 #define INPUT_H
 
