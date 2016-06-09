@@ -18,8 +18,6 @@ class Graphics;
 class Sprite
 {
 private:
-    SDL_Rect _sourceRect;
-    SDL_Texture* _spriteSheet;
     float _x;
     float _y;
     
@@ -29,6 +27,11 @@ public:
     virtual ~Sprite();
     virtual void update();
     void draw(Graphics &graphics, int x, int y);
+    
+protected:
+    SDL_Rect _sourceRect;
+    SDL_Texture* _spriteSheet;
+
 };
 
 #endif

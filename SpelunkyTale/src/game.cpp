@@ -36,7 +36,9 @@ void Game::gameLoop()
     Graphics graphics;
     Input input;
     SDL_Event event;
-    this->_player = Sprite(graphics, "/Users/senghooi/Documents/000Code/SpelunkyTale/SpelunkyTale/assets/sprites/MyChar.png", 0, 0, 16, 16, 200, 200);
+    this->_player = AnimatedSprite(graphics, "/Users/senghooi/Documents/000Code/SpelunkyTale/SpelunkyTale/assets/sprites/MyChar.png", 0, 0, 16, 16, 200, 200, 100);
+    this->_player.setupAnimation();
+    this->_player.playAnimation("RunLeft");
     
     int LAST_UPDATE_TIME = SDL_GetTicks();
     while(true)
@@ -90,5 +92,5 @@ void Game::draw(Graphics &graphics)
 
 void Game::update(float elapsedTime)
 {
-    
+    this->_player.update(elapsedTime);
 }
