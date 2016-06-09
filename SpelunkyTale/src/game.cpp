@@ -6,6 +6,7 @@
 //  Copyright © 2016 Sam Nub. All rights reserved.
 //
 
+#include <iostream>
 #include <SDL2/SDL.h>
 #include "game.h"
 #include "graphics.h"
@@ -35,7 +36,7 @@ void Game::gameLoop()
     Graphics graphics;
     Input input;
     SDL_Event event;
-    
+    this->_player = Sprite(graphics, "/Users/senghooi/Documents/000Code/SpelunkyTale/SpelunkyTale/assets/sprites/MyChar.png", 0, 0, 16, 16, 200, 200);
     
     int LAST_UPDATE_TIME = SDL_GetTicks();
     while(true)
@@ -72,6 +73,8 @@ void Game::gameLoop()
         int ELAPSED_TIME_MS = CURRENT_TIME_MS - LAST_UPDATE_TIME;
         this->update(std::min(ELAPSED_TIME_MS, MAX_FRAME_TIME));
         LAST_UPDATE_TIME = CURRENT_TIME_MS;
+        
+        this->draw(graphics);
     }
     
     
@@ -80,7 +83,9 @@ void Game::gameLoop()
 
 void Game::draw(Graphics &graphics)
 {
-    
+    graphics.clear();
+    this->_player.draw(graphics, 200, 200);
+    graphics.flip();
 }
 
 void Game::update(float elapsedTime)
