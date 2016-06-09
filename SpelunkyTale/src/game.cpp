@@ -11,6 +11,14 @@
 #include "graphics.h"
 #include "input.h"
 
+namespace
+{
+    const int FPS = 50;
+    const int MAX_FRAME_TIME = 5 * 1000 / FPS;
+}
+
+
+
 Game::Game()
 {
     SDL_Init(SDL_INIT_EVERYTHING);
@@ -28,6 +36,8 @@ void Game::gameLoop()
     Input input;
     SDL_Event event;
     
+    
+    int LAST_UPDATE_TIME = SDL_GetTicks();
     while(true)
     {
         input.beginNewFrame(); //reset press and release events
@@ -50,14 +60,22 @@ void Game::gameLoop()
                 return;
             }
         }
-        
         if(input.wasKeyPressed(SDL_SCANCODE_ESCAPE) == true)
         {
             return;
         }
         
         
+        
+        //right before end of loop, log how long it took to push out this frame
+        const int CURRENT_TIME_MS = SDL_GetTicks();
+        int ELAPSED_TIME_MS = CURRENT_TIME_MS - LAST_UPDATE_TIME;
+        this->update(std::min(ELAPSED_TIME_MS, MAX_FRAME_TIME));
+        LAST_UPDATE_TIME = CURRENT_TIME_MS;
     }
+    
+    
+    
 }
 
 void Game::draw(Graphics &graphics)
