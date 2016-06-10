@@ -38,7 +38,7 @@ void Game::gameLoop()
     SDL_Event event;
     this->_player = AnimatedSprite(graphics, "/Users/senghooi/Documents/000Code/SpelunkyTale/SpelunkyTale/assets/sprites/MyChar.png", 0, 0, 16, 16, 200, 200, 100);
     this->_player.setupAnimation();
-    this->_player.playAnimation("RunLeft");
+    this->_player.playAnimation("RunRight");
     
     int LAST_UPDATE_TIME = SDL_GetTicks();
     while(true)
