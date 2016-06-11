@@ -37,9 +37,7 @@ public:
     void update(int elapsedTime);
     
     void draw(Graphics &graphics, int x, int y);
-    
-    //required function (thats why its virtual) that sets up all anims for a sprite
-    virtual void setupAnimation();
+
     
 protected:
     double _timeToUpdate;
@@ -57,7 +55,10 @@ protected:
     void setVisible(bool visible);
     
     //stuff that happens when anim finishes
-    virtual void animationDone(std::string currentAnimation);
+    virtual void animationDone(std::string currentAnimation) = 0;
+    
+    //required function (thats why its virtual) that sets up all anims for a sprite
+    virtual void setupAnimation() = 0; //=0 to make it pure virtual
 };
 
 #endif
