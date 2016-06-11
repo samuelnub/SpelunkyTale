@@ -67,7 +67,19 @@ void Game::gameLoop()
         {
             return;
         }
+        else if(input.isKeyHeld(SDL_SCANCODE_LEFT) == true)
+        {
+            _player.moveLeft();
+        }
+        else if(input.isKeyHeld(SDL_SCANCODE_RIGHT) == true)
+        {
+            _player.moveRight();
+        }
         
+        if(!input.isKeyHeld(SDL_SCANCODE_LEFT) && !input.isKeyHeld(SDL_SCANCODE_RIGHT))
+        {
+            this->_player.stopMoving();
+        }
         
         
         //right before end of loop, log how long it took to push out this frame
