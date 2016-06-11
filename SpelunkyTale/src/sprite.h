@@ -18,8 +18,7 @@ class Graphics;
 class Sprite
 {
 private:
-    float _x;
-    float _y;
+
     
 public:
     Sprite();
@@ -31,6 +30,10 @@ public:
 protected:
     SDL_Rect _sourceRect;
     SDL_Texture* _spriteSheet;
+    
+    
+    float _x;
+    float _y;
 
 };
 
