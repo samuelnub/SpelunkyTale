@@ -20,9 +20,9 @@ Player::Player()
     
 }
 
-Player::Player(Graphics &graphics, float x, float y) : AnimatedSprite(graphics, "/Users/senghooi/Documents/000Code/SpelunkyTale/SpelunkyTale/assets/sprites/MyChar.png", 0, 0, 16, 16, x, y, 100)
+Player::Player(Graphics &graphics, float x, float y) : AnimatedSprite(graphics, "/assets/sprites/MyChar.png", 0, 0, 16, 16, x, y, 100)
 {
-    graphics.loadImage("/Users/senghooi/Documents/000Code/SpelunkyTale/SpelunkyTale/assets/sprites/MyChar.png");
+    graphics.loadImage("/assets/sprites/MyChar.png");
     this->setupAnimation();
     this->playAnimation("RunRight");
 }
